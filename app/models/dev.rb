@@ -4,12 +4,9 @@ class Dev < ActiveRecord::Base
 
     def received_one?(item_name)
         self.freebie.filter{|own_freebie|
-            if item_name == own_freebie.item_name
-                return true
-            else
-                return false
-            end
+            return true if item_name == own_freebie.item_name
         }
+        false
     end
 
     def give_away(dev, freebie)
